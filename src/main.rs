@@ -1,4 +1,5 @@
 mod balances;
+mod system;
 fn main() {
 	let name="Ronnie".to_string();
 	let mut bal = balances::Pallet::new();
