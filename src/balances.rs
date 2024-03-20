@@ -1,4 +1,5 @@
 use std::collections::BTreeMap;
+#[derive(Debug)]
 pub struct Pallet{
     balances:BTreeMap<String,u128>,
 }
@@ -17,10 +18,10 @@ impl Pallet{
     }
 
     pub fn transfer(&mut self,from:&String,to:&String,amount:u128)->Result<(),&'static str>{
-        self.set_balance(from.to_string(), 100);
-        self.set_balance(to.to_string(), 100);
+        // self.set_balance(from.to_string(), 100);
+        // self.set_balance(to.to_string(), 100);
         assert!( amount>0,"Amount should be more than 0");
-        assert!(self.see_balance(&from)>amount,"From account should have enough Money");
+        assert!(self.see_balance(&from)>=amount,"From account should have enough Money");
         self.set_balance(from.to_string(), self.see_balance(&from)-amount);
         self.set_balance(to.to_string(), self.see_balance(&to)+amount);
         Ok(())
