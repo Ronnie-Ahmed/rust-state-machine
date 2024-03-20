@@ -1,6 +1,9 @@
 use std::{println, result::Result::{self, Ok}};
 
-
+type AccountId=String;
+type Nonce=u32;
+type BlockNumber=u32;
+type Balance=u128;
 
 mod balances;
 mod system;
@@ -27,13 +30,13 @@ fn main()->Result<(),&'static str> {
     let mut runtime=Runtime::new();
     runtime.system.inc_block_number();
 
-    let blocknumber=runtime.system.get_block_number();
+    let blocknumber:BlockNumber=runtime.system.get_block_number();
     assert_eq!(blocknumber,1);
 
-    let alice=String::from("Alice");
-    let bob=String::from("Bob");
-    let charlie=String::from("charlie");
-    let amount=50;
+    let alice: AccountId=String::from("Alice");
+    let bob:AccountId=String::from("Bob");
+    let charlie:AccountId=String::from("charlie");
+    let amount:Balance=50;
 
     runtime.balances.set_balance(alice.clone(), amount);
     runtime.balances.set_balance(bob.clone(), amount);
