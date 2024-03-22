@@ -1,5 +1,6 @@
 mod balances;
 mod system;
+mod support;
 
 
 
@@ -26,7 +27,6 @@ impl system::Config for Runtime {
 }
 
 impl balances::Config for Runtime {
-	type AccountId = types::AccountId;
 	type Balance = types::Balance;
 }
 
